@@ -1,0 +1,3 @@
+dist/*.js
+examples/*.js
+rollup.config.*.js

@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "lib",
+    "module": "es2015",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "importHelpers": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "lib/types",
+    "removeComments": true
+  },
+  "exclude": [
+    "node_modules",
+    "scripts",
+    "lib",
+    "dist"
+  ]
+}
