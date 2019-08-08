@@ -1,6 +1,6 @@
 {
   "name": "ping-url",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "npm test",
   "main": "main.js",
   "scripts": {
