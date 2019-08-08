@@ -33,7 +33,7 @@ function config({
  * @param url 检测的url
  */
 function check(url){
-    return new Promise(async (resolve, reject) => {
+    return new Promise<Tresult>(async (resolve, reject) => {
         if(!isUrl(url)){
             reject({
                 status: false,
@@ -59,6 +59,15 @@ function check(url){
     });
 }
 export default {
+    /**
+     * 检查url是否能访问，并返回检测数据
+     * @param url 检测的url
+     */
     check: (url: string) => check(url),
-    config: (prot: TconfigOption) => config(prot)
+    /**
+     * 设置默认协议
+     * @param option 
+     *  option.protocol 协议名
+     */
+    config: (option: TconfigOption) => config(option)
 };
