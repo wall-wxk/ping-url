@@ -13,7 +13,8 @@ module.exports = {
         "es6": true, // 启用除了 modules 以外的所有 ECMAScript 6 特性（该选项会自动设置 ecmaVersion 解析器选项为 6
         "browser": true, // 浏览器环境中的全局变量
         "node":true,
-        "commonjs": true
+        "commonjs": true,
+        "mocha": true
     },
     "extends": [
         "eslint:recommended",

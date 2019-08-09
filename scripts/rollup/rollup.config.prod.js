@@ -23,9 +23,17 @@ const banner = `
 */
 `;
 
-let override = { compilerOptions: { 
-    "declaration": false,
- } };
+const override = {
+    compilerOptions: {
+        "declaration": false,
+    }
+};
+
+const typescriptConfig = {
+    exclude: ['node_modules/**', 'test'],
+    "tsconfig": "tsconfig.build.json",
+    "tsconfigOverride": override
+}
 
 export default [
     {
@@ -57,11 +65,7 @@ export default [
             replace({
                 'process.env.NODE_ENV': JSON.stringify('production')
             }),
-            typescript({
-                exclude: 'node_modules/**',
-                "tsconfig": "tsconfig.json",
-                "tsconfigOverride": override
-            }),
+            typescript(typescriptConfig),
             filesize()
         ]
     },
@@ -81,11 +85,7 @@ export default [
             replace({
                 'process.env.NODE_ENV': JSON.stringify('production')
             }),
-            typescript({
-                exclude: 'node_modules/**',
-                "tsconfig": "tsconfig.json",
-                "tsconfigOverride": override
-            }),
+            typescript(typescriptConfig),
             uglify({
                 compress: {
                     drop_console: true

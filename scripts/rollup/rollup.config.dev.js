@@ -11,9 +11,11 @@ import {
 } from '../config.js';
 
 
-let override = { compilerOptions: { 
-    "declaration": false,
- } };
+const override = { 
+    compilerOptions: { 
+        "declaration": false,
+    }
+};
 
 export default {
     ...baseConfig,
@@ -35,8 +37,8 @@ export default {
     plugins: [
         ...baseConfig.plugins,
         typescript({
-            exclude: 'node_modules/**',
-            "tsconfig": "tsconfig.json",
+            exclude: ['node_modules/**', "test"],
+            "tsconfig": "tsconfig.build.json",
             "tsconfigOverride": override
         }),
         serve({

@@ -1,4 +1,4 @@
-import Ping from '../dist/ping-url.esm'
+import Ping from '../src/main';
 import {
     expect
 } from 'chai';

@@ -1,7 +1,7 @@
 {
   "name": "ping-url",
   "version": "1.0.2",
-  "description": "npm test",
+  "description": "Check the url is normally accessible or not",
   "main": "main.js",
   "scripts": {
     "commit": "git-cz",
@@ -9,10 +9,11 @@
     "clean": "rimraf dist && rimraf lib",
     "clean:example": "rimraf example/lib",
     "dev": "npm run clean:example && rollup --watch --config scripts/rollup/rollup.config.dev.js",
-    "build": "npm run clean && tsc && rollup --config scripts/rollup/rollup.config.prod.js",
+    "build": "npm run clean && tsc --project tsconfig.build.json && rollup --config scripts/rollup/rollup.config.prod.js",
     "eslint": "eslint src --fix --ext .ts",
-    "push:publish": "git push --follow-tags origin master && npm publish",
+    "push:publish": "npm run build && git push --follow-tags origin master && npm publish",
     "test": "cross-env NODE_ENV=test nyc mocha",
+    "test:report": "./node_modules/http-server/bin/http-server ./coverage -p 8087 -o  -c-1",
     "coveralls": "npm run test && nyc report --reporter=text-lcov | coveralls"
   },
   "author": {
@@ -31,9 +32,12 @@
     "@babel/register": "^7.5.5",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@types/expect": "^1.20.4",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.6.9",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
+    "canvas": "^2.5.0",
     "chai": "^4.2.0",
     "commitizen": "^4.0.3",
     "commitlint-config-cz": "^0.12.1",
@@ -42,6 +46,7 @@
     "cz-customizable": "^6.2.0",
     "eslint": "^5.16.0",
     "esm": "^3.2.25",
+    "http-server": "^0.11.1",
     "husky": "^3.0.2",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
@@ -62,7 +67,9 @@
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-typescript2": "^0.22.1",
     "rollup-plugin-uglify": "^6.0.2",
+    "source-map-support": "^0.5.13",
     "standard-version": "^7.0.0",
+    "ts-node": "^8.3.0",
     "typescript": "^3.5.3",
     "uglify-es": "^3.3.9"
   },
@@ -100,5 +107,25 @@
     "type": "git",
     "url": "https://github.com/wall-wxk/ping-url.git"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "nyc": {
+    "include": [
+      "src/**/*.ts",
+      "test/**/*.ts"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true,
+    "all": true
+  }
 }
