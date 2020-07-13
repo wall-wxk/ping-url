@@ -68,7 +68,7 @@
     "rollup-plugin-typescript2": "^0.22.1",
     "rollup-plugin-uglify": "^6.0.2",
     "source-map-support": "^0.5.13",
-    "standard-version": "^7.0.0",
+    "standard-version": "^8.0.1",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3",
     "uglify-es": "^3.3.9"
